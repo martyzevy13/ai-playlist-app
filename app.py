@@ -1,15 +1,14 @@
 from flask import Flask, render_template, request, jsonify, redirect, url_for, session
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
-from openai import OpenAI
+import openai
 import json
 app = Flask(__name__)
 
 app.config['SESSION_COOKIE_NAME'] = 'Spotify OpenAI Cookie'
 app.secret_key = 'iwhrefpirewuhg@IU#308urewf#2948!@#(EI)'
 TOKEN_INFO = 'token_info'
-
-client = OpenAI()
+openai.api_key = 'sk-proj-3x3Lt9JcJWqIAkNExBLzT3BlbkFJCLe3nb1dz3kSITdfbhWD'
 
 @app.route('/')
 def home():
@@ -43,7 +42,7 @@ def generate_playlist():
             if not token_info:
                 return redirect('/')
 
-            completion = client.chat.completions.create(
+            completion = openai.chat.completions.create(
                 model="gpt-4o-mini",
                 messages=
                 [
