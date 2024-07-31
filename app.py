@@ -109,4 +109,6 @@ def display_playlist(playlist_id):
     return render_template('playlist.html', playlist=playlist)
 
 if __name__ == '__main__':
-    app.run(debug=True, port=8888)
+    port = int(os.environ.get('PORT', 8888))
+    app.run(debug=True, port=port)
+
