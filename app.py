@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 app = Flask(__name__)
 
 app.config['SESSION_COOKIE_NAME'] = 'Spotify OpenAI Cookie'
-app.secret_key = os.getenv('APP_API_KEY')'iwhrefpirewuhg@IU#308urewf#2948!@#(EI)'
+app.secret_key = 'iwhrefpirewuhg@IU#308urewf#2948!@#(EI)'
 TOKEN_INFO = 'token_info'
 load_dotenv()
 openai.api_key = os.getenv('OPENAI_API_KEY')
