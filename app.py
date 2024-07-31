@@ -4,15 +4,18 @@ from spotipy.oauth2 import SpotifyOAuth
 import openai
 import json
 from flask_cors import CORS
+from dotenv import load_dotenv
+
 app = Flask(__name__)
 
 app.config['SESSION_COOKIE_NAME'] = 'Spotify OpenAI Cookie'
 app.secret_key = 'iwhrefpirewuhg@IU#308urewf#2948!@#(EI)'
 TOKEN_INFO = 'token_info'
-openai.api_key = 'sk-proj-3x3Lt9JcJWqIAkNExBLzT3BlbkFJCLe3nb1dz3kSITdfbhWD'
+load_dotenv()
+openai.api_key = os.getenv('OPENAI_API_KEY')
 CORS(app, resources={r"*": {"origins": "https://aispotifyplaylists.martinestrin.com"}})
 
-@app.route('https://aispotifyplaylists.martinestrin.com')
+@app.route('/')
 def home():
     auth_url = create_spotify_oauth().get_authorize_url()
     return redirect(auth_url)
