@@ -34,8 +34,8 @@ def redirect_page():
 
 def create_spotify_oauth():
     return SpotifyOAuth(
-        client_id=os.getenv('SPOTIFY_CLIENT_ID'),
-        client_secret=os.getenv('SPOTIFY_CLIENT_SECRET'),
+        client_id=os.getenv('SPOTIPY_CLIENT_ID'),
+        client_secret=os.getenv('SPOTIPY_CLIENT_SECRET'),
         redirect_uri=url_for('redirect_page', _external=True),
         scope='user-library-read playlist-modify-private playlist-modify-public'
     )
