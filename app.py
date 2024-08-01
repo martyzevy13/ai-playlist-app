@@ -26,7 +26,6 @@ def home():
 
 @app.route('/redirect')
 def redirect_page():
-    session.clear()
     code = request.args.get('code')
     token_info = create_spotify_oauth().get_access_token(code)
     session[TOKEN_INFO] = token_info
